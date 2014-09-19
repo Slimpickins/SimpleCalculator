@@ -1,0 +1,33 @@
+# First project to be released, just trying to learn to code better.
+
+from Tkinter import *
+
+def calculate():
+   price = float(nprice.get())
+   shipping = float(nshipping.get())
+   selling = float(nselling.get())
+   profit = selling*.87-price-shipping
+   profitpercentage = profit/price*100
+   labelresult= Label(root,text='your profit is: %2f' % profit).grid(row=7,column=2)
+   labelresult= Label(root,text='your profit percentage is: %2f' % profitpercentage).grid(row=8,column=2)
+
+root=Tk()
+root.geometry('400x200+100+200')
+root.title('EbayTool')
+
+nprice = StringVar()
+nshipping = StringVar()
+nselling = StringVar()
+
+label1 = Label(root,text='This is ebaytool', fg='red').grid(row=0, column=2)
+label2 = Label(root,text='Enter price paid for item').grid(row=1,column=0)
+label3 = Label(root,text='Shipping cost').grid(row=2,column=0)
+label4 = Label(root,text='Sell price').grid(row=3,column=0)
+
+myprice = Entry(root,textvariable = nprice).grid(row=1, column=2)
+myshipping = Entry(root,textvariable = nshipping).grid(row=2, column=2)
+myselling = Entry(root,textvariable = nselling).grid(row=3, column=2)
+
+button1 = Button(root,text='Calculate profit', command=calculate).grid(row=4, column=0)
+
+root.mainloop()
